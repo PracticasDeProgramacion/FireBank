@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zero - Personal Banking</title>
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrap header">
+            <a href="#home" aria-label="Firebank Home">
+                <div class="logo">Fire<b>Bank</b></div>
+                <div class="tagline">Personal Banking · Loans · Credit Cards</div>
+            </a>
+            <div class="header-right">
+                <div class="search-wrap">
+                    <form class="search" id="search-form">
+                        <input id="global-search" placeholder="Search..." aria-label="Search all sections">
+                        <button class="btn" type="submit">Search</button>
+                    </form>
+                    <div id="search-results" class="search-results hidden"></div>
+                </div>
+                <div class="header-dropdown" id="language-dropdown">
+                    <button class="header-menu-trigger language-trigger" id="language-trigger" type="button"
+                        aria-expanded="false" aria-controls="language-menu" aria-label="Select language">
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                        <span id="language-current">English</span>
+                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="header-menu hidden" id="language-menu" role="menu" aria-label="Select language">
+                        <button class="language-option" type="button" role="menuitemradio" data-language="en"
+                            aria-checked="true">English</button>
+                        <button class="language-option" type="button" role="menuitemradio" data-language="es"
+                            aria-checked="false">Español</button>
+                    </div>
+                </div>
+                <a href="#login" class="btn" id="signin-link"><i class="fa-solid fa-right-to-bracket"
+                        aria-hidden="true"></i> Sign in</a>
+                <a href="#create-account" class="btn" id="create-account-link"><i class="fa-solid fa-user-plus"
+                        aria-hidden="true"></i> Create account</a>
+                <div class="header-dropdown hidden" id="settings-dropdown">
+                    <button class="header-menu-trigger" id="settings-trigger" type="button" aria-expanded="false"
+                        aria-controls="settings-menu">
+                        <i class="fa-solid fa-gear" aria-hidden="true"></i> Settings <i class="fa-solid fa-chevron-down"
+                            aria-hidden="true"></i>
+                    </button>
+                    <div class="header-menu hidden" id="settings-menu">
+                        <a href="#account-settings" data-menu-link><i class="fa-solid fa-user-gear"
+                                aria-hidden="true"></i> Account settings</a>
+                        <a href="#privacy" data-menu-link><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                            Privacy settings</a>
+                        <div class="menu-separator" role="separator"></div>
+                        <a href="#help" data-menu-link><i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+                            Help</a>
+                    </div>
+                </div>
+                <div class="header-dropdown hidden" id="user-dropdown">
+                    <button class="header-menu-trigger" id="user-trigger" type="button" aria-expanded="false"
+                        aria-controls="user-menu">
+                        <i class="fa-solid fa-circle-user" aria-hidden="true"></i> <span
+                            id="header-username">User</span> <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="header-menu hidden" id="user-menu">
+                        <a href="#my-profile" data-menu-link><i class="fa-solid fa-id-card" aria-hidden="true"></i> My
+                            profile</a>
+                        <div class="menu-separator" role="separator"></div>
+                        <button id="logout-button" type="button"><i class="fa-solid fa-right-from-bracket"
+                                aria-hidden="true"></i> Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="wrap nav-inner">
+            <a href="#home" data-nav="home">Home</a>
+            <a href="#online-banking" data-nav="online-banking">Online Banking</a>
+            <a href="#feedback" data-nav="feedback">Feedback</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="wrap">
+            <h1>Banking made simple.</h1>
+            <p>Manage your accounts, review your checking account activity, keep track of your spending and explore your
+                finances with convenient online banking tools. Everything you need to understand your money, all in one
+                place.</p>
+        </div>
+    </section>
+
+    <main class="wrap">
+        <nav class="account-tabs hidden" id="account-tabs" aria-label="Online Banking sections">
+            <a href="#account-summary" data-account-tab="account-summary">Account Summary</a>
+            <a href="#account-activity" data-account-tab="account-activity">Account Activity</a>
+            <a href="#transfer-funds" data-account-tab="transfer-funds">Transfer Funds</a>
+            <a href="#pay-bills" data-account-tab="pay-bills">Pay Bills</a>
+            <a href="#money-map" data-account-tab="money-map">My Money Map</a>
+            <a href="#online-statements" data-account-tab="online-statements">Online Statements</a>
+        </nav>
+
+        <section class="page" id="page-home" data-align="center">
+            <div class="grid">
+                <article class="card">
+                    <div class="card-heading">
+                        <div class="symbol"><i class="fa-solid fa-building-columns" aria-hidden="true"></i></div>
+                        <a href="#online-banking">
+                            <h3>Online Banking</h3>
+                        </a>
+                    </div>
+                    <p>Access your accounts and manage your finances.</p>
+                </article>
+                <article class="card">
+                    <div class="card-heading">
+                        <div class="symbol"><i class="fa-solid fa-money-bill-transfer" aria-hidden="true"></i></div>
+                        <a href="#checking-account-activity">
+                            <h3>Checking Account</h3>
+                        </a>
+                    </div>
+                    <p>Check the transactions of your checking account.</p>
+                </article>
+                <article class="card">
+                    <div class="card-heading">
+                        <div class="symbol"><i class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i></div>
+                        <a href="#transfer-funds">
+                            <h3>Transfer Funds</h3>
+                        </a>
+                    </div>
+                    <p>Move money between your demonstration accounts.</p>
+                </article>
+                <article class="card">
+                    <div class="card-heading">
+                        <div class="symbol"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></div>
+                        <a href="#pay-bills">
+                            <h3>Pay Bills</h3>
+                        </a>
+                    </div>
+                    <p>Record sample payments and track your bills.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-login" data-align="center">
+            <div class="title">
+                <h2>Online Banking Login</h2>
+                <p class="muted">Sign in to access your account information.</p>
+            </div>
+            <div class="card form-card" id="login-field">
+                <form id="login-form">
+                    <div class="field">
+                        <label for="username">Username</label>
+                        <input id="username" name="username" autocomplete="username" required placeholder="Username">
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Password">
+                    </div>
+                    <div class="login-options">
+                        <label class="remember-option" for="keep-signed-in">
+                            <input id="keep-signed-in" name="keep-signed-in" type="checkbox">
+                            <span>Keep me signed in</span>
+                        </label>
+                    </div>
+                    <button class="btn">Sign in</button>
+                    <div class="login-forgotPass">
+                        <a href="#forgot-password">Forgot your password?</a>
+                    </div>
+                    <div id="login-message" aria-live="polite"></div>
+                </form>
+                <p>Put 'Username' in the username input and 'Password' in the password input to log in</p>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-forgot-password" data-align="center">
+            <div class="title">
+                <h2>Forgotten Password</h2>
+                <p class="muted">If you forgot your password, enter your email address and we'll send you instructions.
+                </p>
+            </div>
+            <div class="card form-card">
+                <form id="forgot-password-form">
+                    <div class="field">
+                        <label for="recovery-email">Email</label>
+                        <input id="recovery-email" name="email" type="email" autocomplete="email" required>
+                    </div>
+                    <button class="btn" type="submit">Send Password</button>
+                    <div id="recovery-message" aria-live="polite"></div>
+                    <p class="login-return"><a href="#login">Back to sign in</a></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-online-banking" data-align="left">
+            <div class="online-image">
+                <div>
+                    <h2>Online Banking</h2>
+                    <p>Manage your money. Understand your finances.</p>
+                </div>
+            </div>
+            <div>
+                <div class="title title-online-bank">
+                    <h2>Online Banking</h2>
+                    <p class="muted">Choose an option below to manage your accounts.</p>
+                </div>
+                <div class="gridDos">
+                    <div class="card">
+                        <h3>Account Summary</h3>
+                        <p>Review balances for your accounts.</p><a href="#account-summary">View accounts →</a>
+                    </div>
+                    <div class="card">
+                        <h3>Account Activity</h3>
+                        <p>Search and filter your transactions.</p><a href="#account-activity">View activity →</a>
+                    </div>
+                    <div class="card">
+                        <h3>Transfer Funds</h3>
+                        <p>Transfer money between accounts.</p><a href="#transfer-funds">Make a transfer →</a>
+                    </div>
+                    <div class="card">
+                        <h3>Pay Bills</h3>
+                        <p>Make a simulated bill payment.</p><a href="#pay-bills">Pay bills →</a>
+                    </div>
+                    <div class="card">
+                        <h3>My Money Map</h3>
+                        <p>Explore spending by category.</p><a href="#money-map">View Money Map →</a>
+                    </div>
+                    <div class="card">
+                        <h3>Online Statements</h3>
+                        <p>View and download sample statements.</p><a href="#online-statements">View statements →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-account-summary" data-align="left">
+            <div class="title">
+                <h2>Account Summary</h2>
+                <p class="muted">Your account balances at a glance.</p>
+            </div>
+            <section class="summary-group">
+                <h2>Cash Accounts</h2>
+                <div class="summary-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="#checking-account-activity">Checking</a></td>
+                                <td id="checking-table"></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#account-activity">Savings</a></td>
+                                <td id="savings-table"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="summary-group">
+                <h2>Investment Accounts</h2>
+                <div class="summary-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="#account-activity">Brokerage</a></td>
+                                <td>$197.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="summary-group">
+                <h2>Credit Accounts</h2>
+                <div class="summary-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Credit Card</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="#account-activity">Checking</a></td>
+                                <td>VISA ending in 1879</td>
+                                <td>-$50.20</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#account-activity">Credit Card</a></td>
+                                <td>VISA ending in 3943</td>
+                                <td>-$265.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="summary-group">
+                <h2>Loan Accounts</h2>
+                <div class="summary-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="#account-activity">Loan</a></td>
+                                <td>$780.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+
+        <section class="page hidden" id="page-account-activity" data-align="center">
+            <nav class="activity-tabs" role="tablist" aria-label="Account activity views">
+                <button class="active" id="show-transactions-tab" type="button" role="tab" aria-selected="true"
+                    aria-controls="activity-view">Show Transactions</button>
+                <button id="find-transactions-tab" type="button" role="tab" aria-selected="false"
+                    aria-controls="activity-view">Find Transactions</button>
+            </nav>
+            <h2 class="activity-heading" id="activity-heading">Show Transactions</h2>
+            <p class="muted activity-subtitle" id="activity-subtitle">Choose an account to view.</p>
+            <div class="activity-account-control" id="activity-account-control">
+                <label for="activity-account">Account</label>
+                <select id="activity-account">
+                    <option value="Savings">Savings</option>
+                    <option value="Checking">Checking</option>
+                    <option value="all">All Accounts</option>
+                </select>
+            </div>
+            <div id="activity-view">
+                <div class="activity-search-panel hidden" id="activity-search-panel">
+                    <form id="activity-find-form">
+                        <div class="find-transaction-row">
+                            <label for="activity-description">Description</label>
+                            <input id="activity-description" type="search">
+                        </div>
+                        <div class="find-transaction-row">
+                            <label for="activity-date-from">Dates</label>
+                            <div class="find-transaction-range">
+                                <input id="activity-date-from" type="date" aria-label="Date from">
+                                <span>To</span>
+                                <input id="activity-date-to" type="date" aria-label="Date to">
+                            </div>
+                        </div>
+                        <div class="find-transaction-row">
+                            <label for="activity-amount-min">Amounts</label>
+                            <div class="find-transaction-range">
+                                <input id="activity-amount-min" type="number" min="0" step="0.01"
+                                    aria-label="Minimum amount">
+                                <span>To</span>
+                                <input id="activity-amount-max" type="number" min="0" step="0.01"
+                                    aria-label="Maximum amount">
+                            </div>
+                        </div>
+                        <div class="find-transaction-row">
+                            <label for="activity-type">Type</label>
+                            <select id="activity-type">
+                                <option value="all">Any</option>
+                                <option value="credit">Deposit</option>
+                                <option value="debit">Withdrawal</option>
+                            </select>
+                        </div>
+                        <div class="notice error hidden activity-find-message" id="activity-find-message" role="status">
+                        </div>
+                        <div class="activity-find-actions">
+                            <button class="btn" type="submit">Find</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="activity-results" class="hidden"></div>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-transfer-funds" data-align="center">
+            <div id="transfer-entry-step">
+                <div class="title">
+                    <h2>Transfer Funds</h2>
+                    <p class="muted">Transfer between your accounts.</p>
+                </div>
+                <div class="card form-card">
+                    <form id="transfer-form">
+                        <div class="field"><label for="transfer-from">From Account</label><select id="transfer-from">
+                                <option value="checking">Checking</option>
+                                <option value="savings">Savings</option>
+                            </select></div>
+                        <div class="field"><label for="transfer-to">To Account</label><select id="transfer-to">
+                                <option value="savings">Savings</option>
+                                <option value="checking">Checking</option>
+                            </select></div>
+                        <div class="field"><label for="transfer-amount">Amount</label><input id="transfer-amount"
+                                type="number" min="0.01" step="0.01" required></div>
+                        <div class="field"><label for="transfer-description">Description</label><input
+                                id="transfer-description" maxlength="100"></div>
+                        <button class="btn btn-continue">Continue</button>
+                        <div id="transfer-message" aria-live="polite"></div>
+                    </form>
+                </div>
+            </div>
+            <section id="transfer-verify-step" class="hidden">
+                <h2 class="transfer-step-title">Transfer Money &amp; Make Payments - Verify</h2>
+                <div class="transfer-review">
+                    <p class="transfer-review-intro">Please verify that the following transaction is correct by
+                        selecting the Submit button below.</p>
+                    <dl>
+                        <div class="transfer-review-row">
+                            <dt>From Account</dt>
+                            <dd id="transfer-verify-from"></dd>
+                        </div>
+                        <div class="transfer-review-row">
+                            <dt>To Account</dt>
+                            <dd id="transfer-verify-to"></dd>
+                        </div>
+                        <div class="transfer-review-row">
+                            <dt>Amount</dt>
+                            <dd id="transfer-verify-amount"></dd>
+                        </div>
+                        <div class="transfer-review-row">
+                            <dt>Description</dt>
+                            <dd id="transfer-verify-description"></dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="transfer-step-actions">
+                    <button class="btn light" id="transfer-cancel-button" type="button">Cancel</button>
+                    <button class="btn" id="transfer-confirm-button" type="button">Submit</button>
+                </div>
+            </section>
+            <section id="transfer-confirm-step" class="hidden">
+                <h2 class="transfer-step-title">Transfer Money &amp; Make Payments - Confirm</h2>
+                <div class="notice success transfer-confirm-message">You successfully submitted your transaction.</div>
+                <div class="transfer-review">
+                    <dl>
+                        <div class="transfer-review-row">
+                            <dt>From Account</dt>
+                            <dd id="transfer-confirm-from"></dd>
+                        </div>
+                        <div class="transfer-review-row">
+                            <dt>To Account</dt>
+                            <dd id="transfer-confirm-to"></dd>
+                        </div>
+                        <div class="transfer-review-row">
+                            <dt>Amount</dt>
+                            <dd id="transfer-confirm-amount"></dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="transfer-confirm-link">
+                    <a id="transfer-view-link" href="#account-activity">View transfers</a>
+                    <span> or </span>
+                    <button class="transfer-another-link" id="transfer-another-button" type="button">make another
+                        transfer</button>
+                </div>
+            </section>
+        </section>
+
+        <section class="page hidden" id="page-pay-bills" data-align="center">
+            <div class="notice success bills-success hidden" id="bills-success-message" role="status">
+                <span id="bills-success-text"></span>
+                <button id="bills-success-dismiss" type="button" aria-label="Dismiss message">&times;</button>
+            </div>
+            <nav class="activity-tabs bill-tabs" role="tablist" aria-label="Bill payment options">
+                <button class="active" id="pay-saved-tab" type="button" role="tab" aria-selected="true"
+                    aria-controls="pay-saved-panel">Pay Saved Payee</button>
+                <button id="add-payee-tab" type="button" role="tab" aria-selected="false"
+                    aria-controls="add-payee-panel">Add New Payee</button>
+                <button id="foreign-currency-tab" type="button" role="tab" aria-selected="false"
+                    aria-controls="foreign-currency-panel">Purchase Foreign Currency</button>
+            </nav>
+            <section id="pay-saved-panel" role="tabpanel" aria-labelledby="pay-saved-tab">
+                <h2 class="bill-pane-title">Make payments to your saved payees</h2>
+                <form id="bill-form">
+                    <div class="bill-form-grid">
+                        <div class="bill-form-row">
+                            <label for="payee">Payee</label>
+                            <div class="bill-payee-control">
+                                <select id="payee" required></select>
+                                <button class="payee-help" type="button" aria-label="Payee information"
+                                    title="Select a saved payee to prepare a payment.">?</button>
+                            </div>
+                        </div>
+                        <div class="bill-form-row">
+                            <label for="bill-account">Account</label>
+                            <select id="bill-account">
+                                <option value="savings">Savings</option>
+                                <option value="checking">Checking</option>
+                            </select>
+                        </div>
+                        <div class="bill-form-row">
+                            <label for="bill-amount">Amount</label>
+                            <div class="bill-amount-control"><span>$</span><input id="bill-amount" type="number"
+                                    min="0.01" step="0.01" required></div>
+                        </div>
+                        <div class="bill-form-row">
+                            <label for="bill-date">Date</label>
+                            <input id="bill-date" type="date" required>
+                        </div>
+                        <div class="bill-form-row">
+                            <label for="bill-description">Description</label>
+                            <input id="bill-description" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="notice error hidden bill-inline-message" id="bill-message" aria-live="polite"></div>
+                    <div class="bill-form-actions"><button class="btn" type="submit">Pay</button></div>
+                </form>
+                <div class="panel">
+                    <div class="panel-head">Payment History</div>
+                    <div class="panel-body" id="bill-history"></div>
+                </div>
+            </section>
+            <section id="add-payee-panel" class="hidden" role="tabpanel" aria-labelledby="add-payee-tab">
+                <h2 class="bill-pane-title">Who are you paying?</h2>
+                <form id="add-payee-form">
+                    <div class="bill-form-grid">
+                        <div class="bill-form-row"><label for="new-payee-name">Payee Name</label>
+                            <input id="new-payee-name" maxlength="80" required>
+                        </div>
+                        <div class="bill-form-row"><label for="new-payee-address">Payee Address</label>
+                            <textarea id="new-payee-address" rows="5" required></textarea>
+                        </div>
+                        <div class="bill-form-row"><label for="new-payee-account">Account</label>
+                            <input id="new-payee-account" maxlength="40" required>
+                        </div>
+                        <div class="bill-form-row"><label for="new-payee-details">Payee Details</label>
+                            <input id="new-payee-details" maxlength="120">
+                        </div>
+                    </div>
+                    <div class="notice error hidden bill-inline-message" id="add-payee-message" aria-live="polite">
+                    </div>
+                    <div class="bill-form-actions"><button class="btn" type="submit">Add</button></div>
+                </form>
+            </section>
+            <section id="foreign-currency-panel" class="hidden" role="tabpanel" aria-labelledby="foreign-currency-tab">
+                <h2 class="bill-pane-title">Purchase foreign currency cash</h2>
+                <form id="currency-form">
+                    <div class="bill-form-grid">
+                        <div class="bill-form-row">
+                            <label for="currency-select">Currency</label>
+                            <div>
+                                <select id="currency-select" required>
+                                    <option value="">Select One</option>
+                                    <option value="EUR">Euro (EUR)</option>
+                                    <option value="GBP">British pound (GBP)</option>
+                                    <option value="CAD">Canadian dollar (CAD)</option>
+                                    <option value="JPY">Japanese yen (JPY)</option>
+                                    <option value="MXN">Mexican peso (MXN)</option>
+                                </select>
+                                <p class="currency-rate">Today's Sell Rate: <span id="currency-rate">Select a
+                                        currency</span></p>
+                            </div>
+                        </div>
+                        <div class="bill-form-row">
+                            <label for="currency-amount">Amount</label>
+                            <div class="currency-options">
+                                <input id="currency-amount" type="number" min="0.01" step="0.01" required>
+                                <label><input type="radio" name="currency-input-type" value="usd" checked> U.S. dollar
+                                    (USD)</label>
+                                <label><input type="radio" name="currency-input-type" value="foreign"> Selected
+                                    currency</label>
+                                <button class="btn light" id="calculate-currency-button" type="button">Calculate
+                                    Costs</button>
+                            </div>
+                        </div>
+                        <div class="currency-conversion" id="currency-conversion">Conversion Amount</div>
+                    </div>
+                    <div class="notice error hidden bill-inline-message" id="currency-message" aria-live="polite"></div>
+                    <div class="bill-form-actions"><button class="btn" id="purchase-currency-button" type="submit"
+                            disabled>Purchase</button></div>
+                </form>
+            </section>
+        </section>
+
+        <section class="page hidden" id="page-money-map" data-align="center">
+            <div class="title">
+                <h2>My Money Map</h2>
+                <p class="muted">Review the inflow and outflow of your money.</p>
+            </div>
+            <div class="map-layout">
+                <div>
+                    <div class="panel">
+                        <div class="panel-head">Inflow</div>
+                        <div class="panel-body money-table" id="inflow-table"></div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-head">Outflow</div>
+                        <div class="panel-body money-table" id="outflow-table"></div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-head">Payments to Zero Bank credit cards</div>
+                        <div class="panel-body money-table" id="credit-payment-table"></div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-head">Summary</div>
+                        <div class="panel-body money-table" id="money-summary"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="chart-title">OutFlow Chart</div>
+                    <svg id="pie-chart" class="map-chart" viewBox="0 0 540 470" role="img"
+                        aria-label="Interactive outflow pie chart"></svg>
+                    <div id="chart-legend" class="legend"></div>
+                    <div class="notice">Select or clear categories in the legend to show or hide their slices.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-online-statements" data-align="center">
+            <div class="title">
+                <h2>Online Statements</h2>
+                <p class="muted">View and download sample account statements.</p>
+            </div>
+            <div class="statement-controls">
+                <div class="field statement-search-field">
+                    <label for="statement-search">Search statements</label>
+                    <input id="statement-search" type="search" placeholder="Search by account or period">
+                </div>
+                <div class="statement-year-filter">
+                    <span>Filter by year</span>
+                    <div class="statement-year-buttons" id="statement-years" role="group" aria-label="Statement years">
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-head">Available Statements</div>
+                <div class="panel-body">
+                    <div class="statement-table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Statement</th>
+                                    <th>Account</th>
+                                    <th>Period</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="statement-list"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="statement-preview" class="panel hidden">
+                <div class="panel-head">Statement Details</div>
+                <div class="panel-body" id="statement-content"></div>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-help" data-align="center">
+            <h1 class="help-title">Help Topics</h1>
+            <div class="help-layout">
+                <nav class="help-topics" id="help-topics" aria-label="Help topics">
+                    <button type="button" class="active" data-help-topic="login" aria-current="true"><i class="fa-solid fa-circle-question"></i> How do I log into my
+                        account?</button>
+                    <button type="button" data-help-topic="transfer" aria-current="false"><i class="fa-solid fa-circle-question"></i> How do I transfer
+                        funds?</button>
+                    <button type="button" data-help-topic="bills" aria-current="false"><i class="fa-solid fa-circle-question"></i> How do I pay
+                        bills?</button>
+                </nav>
+                <div class="help-content">
+                    <section id="help-content-login" data-help-content="login" hidden>
+                        <h2>How do I log into my account?</h2>
+                        <ol>
+                            <li>Select Sign in from the banking home page.</li>
+                            <li>Enter your username and password, then select Sign in.</li>
+                            <li>This is a local demonstration; any non-empty username and password will start a demo
+                                session.</li>
+                        </ol>
+                    </section>
+                    <section id="help-content-transfer" data-help-content="transfer" hidden>
+                        <h2>How do I transfer funds?</h2>
+                        <ol>
+                            <li>Open Transfer Funds from the online banking navigation.</li>
+                            <li>Select different accounts and enter an amount.</li>
+                            <li>Select Continue and verify the transaction details.</li>
+                            <li>Select Submit to complete the transfer, or Cancel to return to the form.</li>
+                        </ol>
+                    </section>
+                    <section id="help-content-bills" data-help-content="bills">
+                        <h2>How do I pay bills?</h2>
+                        <ol>
+                            <li>Open Pay Bills from the online banking navigation.</li>
+                            <li>Select a saved payee from the first dropdown menu.</li>
+                            <li>Select the account from which you want to pull funds.</li>
+                            <li>Enter the amount and date, then click the Pay button.</li>
+                            <li>Add a new payee from the Add New Payee tab.</li>
+                        </ol>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-privacy" data-align="center">
+            <h1 class="privacy-title">Privacy settings</h1>
+            <div class="privacy-layout">
+                <nav class="privacy-topics" id="privacy-topics" aria-label="Privacy topics">
+                    <button type="button" class="active" data-privacy-topic="setting" aria-current="true"><i class="fa-solid fa-circle-check"></i> Privacy settings</button>
+                    <button type="button" data-privacy-topic="sharing" aria-current="false"><i class="fa-solid fa-circle-check"></i> Data sharing</button>
+                    <button type="button" data-privacy-topic="security" aria-current="false"><i class="fa-solid fa-circle-check"></i> Account security </button>
+                </nav>
+                <div class="privacy-content">
+                    <section id="privacy-content-login" data-privacy-content="setting" hidden>
+                        <h2><i class="fa-solid fa-lock"></i> Privacy settings</h2>
+                        <p class="privacy-paraph">Privacy settings play a fundamental role in protecting personal
+                            information in today's
+                            digital world. Every time users create an account on a social network, shopping platform,
+                            streaming service, or mobile application, they share data that can reveal details about
+                            their habits, preferences, interests, and even their location. Privacy settings allow
+                            individuals to control who can access this information and how it may be used. Without
+                            proper privacy controls, personal data can become visible to strangers, advertisers, or
+                            unauthorized third parties. For this reason, understanding and configuring privacy settings
+                            correctly is one of the most important aspects of maintaining online safety.
+
+                            One of the primary functions of privacy settings is controlling the visibility of personal
+                            information. Many online platforms provide users with options to determine who can see their
+                            profile details, posts, photos, contact information, and activity history. Some users may
+                            prefer to make their content public to reach a larger audience, while others choose to
+                            restrict access to friends, family members, or specific groups. These settings provide
+                            flexibility and help users balance convenience with security. Regularly reviewing privacy
+                            preferences is important because platforms frequently update their policies and available
+                            controls.
+
+                            Privacy settings also influence how personal information is collected and processed by
+                            organizations. Many websites and applications gather data to improve services, personalize
+                            content, and deliver targeted advertising. Through privacy controls, users can often limit
+                            data collection, manage tracking preferences, disable location sharing, or opt out of
+                            certain marketing activities. Taking advantage of these options can significantly reduce the
+                            amount of personal information shared online. Users should also read privacy policies
+                            carefully to understand what information is collected and how it is stored, shared, or sold
+                            to third parties.
+
+                            Another critical aspect of privacy management is protecting sensitive information from
+                            cybercriminals. Publicly visible details such as birth dates, addresses, phone numbers, or
+                            workplace information can be exploited in identity theft attempts or phishing scams. By
+                            adjusting privacy settings appropriately, users can reduce their exposure to these risks.
+                            Additionally, limiting the amount of personal information available online makes it more
+                            difficult for malicious actors to build detailed profiles that can be used against them.
+
+                            Ultimately, privacy settings are an essential tool for maintaining control over personal
+                            data and preserving digital security. Technology continues to evolve rapidly, and new forms
+                            of data collection emerge regularly. As a result, users should make privacy management a
+                            routine practice by reviewing account settings, understanding platform policies, and making
+                            informed decisions about the information they share. A proactive approach to privacy not
+                            only protects personal information but also contributes to a safer and more trustworthy
+                            online experience.</p>
+                    </section>
+                    <section id="privacy-content-transfer" data-privacy-content="sharing" hidden>
+                        <h2><i class="fa-solid fa-cloud"></i> Data sharing</h2>
+                        <p class="privacy-paraph">Data sharing refers to the practice of exchanging, transferring, or
+                            providing access to information between individuals, organizations, systems, or
+                            applications. In today's digital economy, data sharing has become a critical component of
+                            business operations, technological innovation, and user experiences. Organizations use
+                            shared data to improve decision-making, enhance products and services, conduct research, and
+                            create personalized experiences for customers. While data sharing offers significant
+                            benefits, it also presents challenges related to privacy, security, compliance, and trust.
+
+                            One of the main advantages of data sharing is improved collaboration. Businesses often
+                            exchange information with partners, suppliers, service providers, and customers to
+                            streamline operations and improve efficiency. For example, a logistics company may share
+                            shipment data with retailers to provide real-time delivery updates, while healthcare
+                            institutions can exchange patient information to improve treatment outcomes. When managed
+                            properly, data sharing enables organizations to make informed decisions and respond more
+                            effectively to changing circumstances.
+
+                            Data sharing also plays a major role in innovation and technological development.
+                            Researchers, developers, and analysts rely on access to data to identify trends, build
+                            predictive models, and develop new solutions. Open data initiatives launched by governments
+                            and public institutions have contributed to advances in fields such as transportation,
+                            healthcare, environmental protection, and education. By making information accessible,
+                            organizations can encourage collaboration and accelerate progress across multiple sectors.
+
+                            However, the sharing of information must be balanced with appropriate safeguards. Personal
+                            and sensitive data require strong protection to prevent unauthorized access, misuse, or
+                            disclosure. Organizations must comply with relevant regulations and ensure that data is
+                            collected, processed, and shared responsibly. Transparency is essential, and users should be
+                            clearly informed about what information is being shared, who will receive it, and for what
+                            purpose. Consent mechanisms and data protection measures help build trust and reduce
+                            potential risks.
+
+                            Another important consideration involves cybersecurity threats. Data exchanges often create
+                            additional points of vulnerability that malicious actors may attempt to exploit. Secure
+                            communication channels, encryption technologies, access controls, and regular monitoring are
+                            necessary to protect shared information. Organizations that fail to implement adequate
+                            safeguards may face data breaches, financial losses, legal consequences, and reputational
+                            damage.
+
+                            In conclusion, data sharing provides substantial benefits for businesses, governments, and
+                            individuals by enabling collaboration, innovation, and efficiency. Nevertheless, these
+                            advantages can only be fully realized when data is handled responsibly and securely. Strong
+                            governance policies, regulatory compliance, transparency, and cybersecurity practices are
+                            essential to ensure that shared information remains protected while delivering value to all
+                            stakeholders involved.</p>
+                    </section>
+                    <section id="privacy-content-bills" data-privacy-content="security">
+                        <h2><i class="fa-solid fa-user-lock"></i> Account security</h2>
+                        <p class="privacy-paraph">Account security is one of the most important aspects of protecting
+                            personal and professional information in the digital age. Online accounts often contain
+                            sensitive data, including financial information, personal communications, documents,
+                            photographs, and access to various digital services. Because cybercriminals continuously
+                            seek opportunities to gain unauthorized access to accounts, individuals and organizations
+                            must take proactive measures to strengthen security and reduce vulnerabilities.
+
+                            The foundation of account security begins with strong passwords. A secure password should be
+                            unique, sufficiently long, and composed of a combination of letters, numbers, and special
+                            characters. Reusing the same password across multiple services can increase risk because a
+                            compromise in one account may lead to unauthorized access to others. Password managers can
+                            help users create and store complex passwords securely, reducing the temptation to use weak
+                            or repetitive credentials.
+
+                            Another essential security measure is multi-factor authentication (MFA). This method
+                            requires users to provide additional verification beyond a password, such as a code sent to
+                            a mobile device, a biometric scan, or an authentication application. MFA significantly
+                            reduces the likelihood of unauthorized access because attackers would need more than just a
+                            stolen password to compromise an account. Many online platforms now offer MFA and strongly
+                            encourage users to enable it as an additional layer of protection.
+
+                            Users should also be aware of phishing attacks and social engineering techniques.
+                            Cybercriminals often attempt to deceive individuals through fraudulent emails, messages, or
+                            websites designed to steal login credentials. Learning how to recognize suspicious
+                            communications is critical for maintaining account security. Signs such as unexpected
+                            requests for personal information, urgent warnings, spelling mistakes, or unfamiliar links
+                            should be treated with caution. Verifying the authenticity of requests before providing
+                            information can prevent many security incidents.
+
+                            Regular monitoring and maintenance are equally important. Users should review account
+                            activity, update passwords periodically when necessary, and keep software and devices
+                            updated with the latest security patches. Many platforms provide notifications about unusual
+                            login attempts or security changes, allowing account owners to respond quickly to potential
+                            threats. Removing unused accounts and limiting access permissions can further reduce
+                            exposure to security risks.
+
+                            In summary, account security requires a combination of strong passwords, multi-factor
+                            authentication, user awareness, and ongoing vigilance. Cyber threats continue to evolve,
+                            making security a shared responsibility between service providers and users. By adopting
+                            good security practices and staying informed about emerging risks, individuals can better
+                            protect their information, maintain control of their digital identities, and reduce the
+                            likelihood of becoming victims of cybercrime.</p>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-create-account" data-align="center">
+            <div class="title">
+                <h2>Create your account</h2>
+                <p class="muted">Enter your details to create a local demo profile.</p>
+            </div>
+            <div class="card form-card">
+                <form id="create-account-form">
+                    <p class="muted">Profile data is stored only in this browser for this demo and is not sent to a server.</p>
+                    <div class="field"><label for="new-username">Username</label><input id="new-username" name="username" autocomplete="username" minlength="3" pattern="[A-Za-z0-9._\-]+" required></div>
+                    <div class="field"><label for="new-email">Email</label><input id="new-email" name="email" type="email" autocomplete="email" required></div>
+                    <div class="field"><label for="new-first-name">First name</label><input id="new-first-name" name="firstName" autocomplete="given-name" required></div>
+                    <div class="field"><label for="new-last-name">Last name</label><input id="new-last-name" name="lastName" autocomplete="family-name" required></div>
+                    <div class="field"><label for="new-birth-date">Date of birth</label><input id="new-birth-date" name="birthDate" type="date" autocomplete="bday" required></div>
+                    <div class="field"><label for="new-phone">Phone</label><input id="new-phone" name="phone" type="tel" autocomplete="tel" required></div>
+                    <div class="field"><label for="new-address">Street address</label><input id="new-address" name="address" autocomplete="address-line1" required></div>
+                    <div class="field"><label for="new-address2">Apartment, suite, etc. (optional)</label><input id="new-address2" name="address2" autocomplete="address-line2"></div>
+                    <div class="field"><label for="new-city">City</label><input id="new-city" name="city" autocomplete="address-level2" required></div>
+                    <div class="field"><label for="new-region">State / province / region</label><input id="new-region" name="region" autocomplete="address-level1" required></div>
+                    <div class="field"><label for="new-postal-code">Postal code</label><input id="new-postal-code" name="postalCode" autocomplete="postal-code" required></div>
+                    <div class="field"><label for="new-country">Country</label><input id="new-country" name="country" autocomplete="country-name" required></div>
+                    <div class="field"><label for="new-password">Password</label><input id="new-password" name="password" type="password" autocomplete="new-password" minlength="8" required></div>
+                    <div class="field"><label for="new-password-confirm">Confirm password</label><input id="new-password-confirm" name="passwordConfirm" type="password" autocomplete="new-password" minlength="8" required></div>
+                    <label class="remember-option" for="create-keep-signed-in"><input id="create-keep-signed-in" type="checkbox"><span>Keep me signed in</span></label>
+                    <button class="btn" type="submit">Create account</button>
+                    <div id="create-account-message" aria-live="polite"></div>
+                    <p class="login-return"><a href="#login">Already have an account? Sign in</a></p>
+                    
+                </form>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-account-settings" data-align="left">
+            <h1 class="help-title">Account settings</h1>
+            <div class="help-layout">
+                <nav class="help-topics" id="settings-topics" aria-label="Account settings">
+                    <button type="button" class="active" data-settings-topic="security" aria-current="true"><i class="fa-solid fa-user-gear"></i> Sign-in details</button>
+                    <button type="button" data-settings-topic="preferences" aria-current="false"><i class="fa-solid fa-sliders"></i> Preferences</button>
+                </nav>
+                <div class="setting-content">
+                    <section data-settings-content="security">
+                        <h2>Sign-in details</h2>
+                        <form id="account-settings-form">
+                            <div class="field-settings"><label for="settings-username">Username</label><input id="settings-username" autocomplete="username" required minlength="3" pattern="[A-Za-z0-9._\-]+"></div>
+                            <div class="field-settings"><label for="settings-email">Email</label><input id="settings-email" type="email" autocomplete="email" required></div>
+                            <div class="field-settings"><label for="settings-current-password">Current password</label><input id="settings-current-password" type="password" autocomplete="current-password" required></div>
+                            <div class="field-settings"><label for="settings-new-password">New password (optional)</label><input id="settings-new-password" type="password" autocomplete="new-password" minlength="8"></div>
+                            <div class="field-settings"><label for="settings-confirm-password">Confirm new password</label><input id="settings-confirm-password" type="password" autocomplete="new-password" minlength="8"></div>
+                            <button class="btn btn-settings" type="submit">Save account settings</button>
+                            <div id="account-settings-message" aria-live="polite"></div>
+                        </form>
+                    </section>
+                    <section data-settings-content="preferences" hidden>
+                        <h2>Preferences</h2>
+                        <form id="preferences-form">
+                            <label class="remember-option" for="email-notifications"><input id="email-notifications" type="checkbox"><span>Email notifications</span></label>
+                            <label class="remember-option" for="security-alerts"><input id="security-alerts" type="checkbox"><span>Security alerts</span></label>
+                            <button class="btn" type="submit">Save preferences</button>
+                            <div id="preferences-message" aria-live="polite"></div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-my-profile" data-align="center">
+            <h1 class="help-title">My profile</h1>
+            <div class="help-layout">
+                <nav class="help-topics" aria-label="Profile sections">
+                    <button type="button" class="active" aria-current="true"><i class="fa-solid fa-id-card"></i> Personal information</button>
+                </nav>
+                <div class="help-content">
+                    <section>
+                        <h2>Personal information</h2>
+                        <form id="profile-form">
+                            <p class="muted">Profile data is stored only in this browser for this demo and is not sent to a server.</p>
+                            <div class="field"><label for="profile-first-name">First name</label><input id="profile-first-name" autocomplete="given-name" required></div>
+                            <div class="field"><label for="profile-last-name">Last name</label><input id="profile-last-name" autocomplete="family-name" required></div>
+                            <div class="field"><label for="profile-email">Email</label><input id="profile-email" type="email" autocomplete="email" required></div>
+                            <div class="field"><label for="profile-phone">Phone</label><input id="profile-phone" type="tel" autocomplete="tel" required></div>
+                            <div class="field"><label for="profile-birth-date">Date of birth</label><input id="profile-birth-date" type="date" autocomplete="bday" required></div>
+                            <div class="field"><label for="profile-address">Street address</label><input id="profile-address" autocomplete="address-line1" required></div>
+                            <div class="field"><label for="profile-address2">Apartment, suite, etc. (optional)</label><input id="profile-address2" autocomplete="address-line2"></div>
+                            <div class="field"><label for="profile-city">City</label><input id="profile-city" autocomplete="address-level2" required></div>
+                            <div class="field"><label for="profile-region">State / province / region</label><input id="profile-region" autocomplete="address-level1" required></div>
+                            <div class="field"><label for="profile-postal-code">Postal code</label><input id="profile-postal-code" autocomplete="postal-code" required></div>
+                            <div class="field"><label for="profile-country">Country</label><input id="profile-country" autocomplete="country-name" required></div>
+                            <button class="btn" type="submit">Save profile</button>
+                            <div id="profile-message" aria-live="polite"></div>
+                            
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="page hidden" id="page-feedback" data-align="left">
+            <div class="title title-feedback">
+                <h2>Feedback</h2>
+                <p class="muted">Send feedback about this demonstration.</p>
+            </div>
+            <div class="card form-card">
+                <form id="feedback-form">
+                    <div class="field"><label for="feedback-name"><i class="fa-solid fa-user"></i>
+                            Name</label><input id="feedback-name" required></div>
+                    <div class="field"><label for="feedback-email"><i class="fa-solid fa-envelope"></i>
+                            Email</label><input id="feedback-email" type="email" required></div>
+                    <div class="field"><label for="feedback-subject"><i class="fa-solid fa-tag"></i>
+                            Subject</label><input id="feedback-subject" required></div>
+                    <div class="field"><label for="feedback-comment"><i class="fa-solid fa-comment"></i>
+                            Comment</label><input id="feedback-comment" required></div>
+                    <div class="feedback-actions">
+                        <button class="btn" type="submit"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                            Send</button>
+                        <button class="btn gray" id="feedback-clear" type="reset"><i class="fa-solid fa-eraser"
+                                aria-hidden="true"></i>
+                            Clear</button>
+                    </div>
+                    <div id="feedback-message" class="hidden" aria-live="polite"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">FireBank Demo · Personal Banking · Loans · Credit Cards</div>
+        <div>Sitio de demostración inspirado en plataformas de práctica como zero.webappsecurity.com. Esta página es únicamente para pruebas y no corresponde a ningún banco o servicio real.</div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
